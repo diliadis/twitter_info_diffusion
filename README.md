@@ -42,3 +42,62 @@ The retweets of every tweet we studied were grouped using the 'created_at' attri
 
 
 ![alt text](https://github.com/diliadis/twitter_info_diffusion/blob/master/results_per_retweet/summary/Screen%20Shot%202019-07-29%20at%201.19.04%20PM.png)
+
+We observe that in the case of real news tweets the information diffusion shots up in the first hours of their creation but it crearly plummets from the first day.  
+On average, the maximum number of retweets displayed in the first hours of a tweet's creation in our set of data is in the range of 300 retweets. In the next period of 10-15 days the rate of diffusion is significantly reduced.
+
+On the other hand, in the case of fake news tweets of our dataset the rate is very similar with that of the real news tweets but their life cycle is clearly shorter (after 10 days the tweets stops being retweeted). 
+
+### Diffusion of information in depth
+
+To study the depth of information diffusion in the network of users, we first had to find the users that had a relationship (followed or being followed) with the initial user (in our case @CNN or @Braitbartnews). The set of users
+that met this condition were classified in the first hop. Each user that did not met the aforementioned condition was then tested for possible relationships with users that were classified in the first hop. Again, the set of users that met this condition were classified in the second hop.
+
+This procedure was repeated until there was no user that did not belonged in a hop or until the remaining users didn't have a relationship with other users in the network. 
+These isolated users were removed and ignored as they probably received the information from users outside from the dataset that we collected and used.
+The computation of the users per hop was especially resource intensive because Twitter's api only allows 450 requests per 15 minutes. These computations took hours with the majority of that time being spent just waiting for the 15 minute 
+to be over. For example in the second hop of every tweet we had to check thousands of relationships (5984 friendship calls for one hop of one tweet took over 3 hours!!!)
+
+Results of user's relationships per hop
+
+|            |       | #friendships checked | #true friend ships | Nodes | Edges | Isolated  | 
+| --- | :---: | :---: | :---: | :---: | :---: | :---: |
+| R- MRT9736 | Hop 1 | 180 | 44 |  |  | | 
+|            | Hop 2 | 5984 | 3 |  |  | |
+|            | Hop 3 | 399 | 1 |  |  | |
+|            | Hop 4 | 132 | 0 | 49 | 48 |132 |
+| R- MRT9739 | Hop 1 | 180 | 54 |  |   | | 
+|            | Hop 2 | 6804 | 1 |  |   | | 
+|            | Hop 3 | 125 | 0 | 56 | 55 | 125 | 
+| R- MRT9772 | Hop 1 | 180 | 25 |  |   | | 
+|            | Hop 2 | 3875 | 0 | 26 | 25  | 155 | 
+
+
+|            |       | #friendships checked | #true friend ships | Nodes | Edges | Isolated  | 
+| --- | :---: | :---: | :---: | :---: | :---: | :---: |
+| F- MRT9671 | Hop 1 | 180 | 111 |  |  | | 
+|            | Hop 2 | 7659 | 58 |  |  | |
+|            | Hop 3 | 848 | 1 |  |  | |
+|            | Hop 4 | 52 | 0 | 129 | 170 |52 |
+| F- MRT9758 | Hop 1 | 180 | 134 |  |   | | 
+|            | Hop 2 | 6164 | 72 |  |   | | 
+|            | Hop 3 | 513 | 0 | 154 | 86 | 27 | 
+| F- MRT9801 | Hop 1 | 180 | 134 |  |   | | 
+|            | Hop 2 | 6164 | 52 |  |   |  | 
+|            | Hop 2 | 493 | 0 | 152 | 186  | 22 
+
+
+plots of users per hop 
+
+![alt text](https://github.com/diliadis/twitter_info_diffusion/blob/master/results_per_retweet/summary/Screen%20Shot%202019-07-29%20at%201.19.04%20PM.png)| 
+
+
+No significant differences were found in user counts per hop and in the level of diffusion of information between the two categories of news. In the case of fake news the number of hops
+was more stable since they are consistently higher than 2 in each of the most retweeted posts that were used for analysis.
+
+
+In both cases, the majority of users receive the information from the starting node, which is located at the first level - hop, while as we go deeper into the network, the number of users per hop reduces significantly, especially between the first and second level.
+
+We also used the networkx library to produce graphs of the user networks
+
+User etwork graphs of real news tweets
