@@ -89,7 +89,7 @@ Results of user's relationships per hop
 
 plots of users per hop 
 
-![alt text](https://github.com/diliadis/twitter_info_diffusion/blob/master/results_per_retweet/summary/Screen%20Shot%202019-07-29%20at%201.19.04%20PM.png)| 
+![alt text](https://github.com/diliadis/twitter_info_diffusion/blob/master/results_per_retweet/summary/Screen%20Shot%202019-07-29%20at%207.40.56%20PM.png)
 
 
 No significant differences were found in user counts per hop and in the level of diffusion of information between the two categories of news. In the case of fake news the number of hops
@@ -101,3 +101,14 @@ In both cases, the majority of users receive the information from the starting n
 We also used the networkx library to produce graphs of the user networks
 
 User etwork graphs of real news tweets
+
+![alt text](https://github.com/diliadis/twitter_info_diffusion/blob/master/results_per_retweet/summary/Screen%20Shot%202019-07-29%20at%207.49.45%20PM.png)
+
+User etwork graphs of fake news tweets
+
+![alt text](https://github.com/diliadis/twitter_info_diffusion/blob/master/results_per_retweet/summary/Screen%20Shot%202019-07-29%20at%207.50.47%20PM.png)
+
+A weird case where a non-celebrity user seems to have very high in and out degree
+
+![alt text](https://github.com/diliadis/twitter_info_diffusion/blob/master/results_per_retweet/summary/Screen%20Shot%202019-07-29%20at%207.51.35%20PM.jpg)
+
