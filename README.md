@@ -41,4 +41,4 @@ Summary of the 3 most retweeted real news tweets
 The retweets of every tweet we studied were grouped using the 'created_at' attribute and then sorted based on the date of creation. This info was then used to create plots of the retweet count of every tweet over time (specifically per hour)
 
 
-![alt text](https://github.com/diliadis/flight_radar/blob/master/images/15_5_2018_node_size_in_degree_node_color_in_degree.png)
+![alt text](https://github.com/diliadis/twitter_info_diffusion/blob/master/results_per_retweet/summary/Screen%20Shot%202019-07-29%20at%201.19.04%20PM.png)
